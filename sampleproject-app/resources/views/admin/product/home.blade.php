@@ -22,7 +22,7 @@
                     <div class="card-body px-0 pb-2">
                         <div class="table-responsive p-0">
                             @if(Session::has('success'))
-                            <div class="alert alert-success" role="alert">
+                            <div class="alert alert-success" style="color:white" role="alert">
                                 {{ Session::get('success') }}
                             </div>
                             @endif
@@ -73,14 +73,14 @@
                                         <td>
                                             <div style="display: flex">
                                                 <div style="padding: 0; display: flex; align-items: center">
-                                                    <button style="width: 40px; height: 40px" type="button" class="btn btn-success d-flex justify-content-center align-items-center">
+                                                    <a href="{{ route('admin/products/edit',['id'=>$product->id]) }}" style="width: 40px; height: 40px" type="button" class="btn btn-success d-flex justify-content-center align-items-center">
                                                         <i class="material-icons opacity-10">edit</i>
-                                                    </button>
+</a>
                                                 </div>
                                                 <div style="margin-left: 10px; display: flex; align-items: center">
-                                                    <button style="width: 40px; height: 40px" type="button" class="btn btn-danger d-flex justify-content-center align-items-center delete-user-button">
+                                                    <a href="{{ route('admin/products/delete',['id'=>$product->id]) }}" style="width: 40px; height: 40px" type="button" class="btn btn-danger d-flex justify-content-center align-items-center delete-user-button">
                                                         <i class="material-icons opacity-10">delete</i>
-                                                    </button>
+</a>
                                                 </div>
                                             
                                             </div>
