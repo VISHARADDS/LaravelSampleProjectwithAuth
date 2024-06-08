@@ -75,7 +75,7 @@
     <label for="imageUpload"> UPLOAD IMAGE </label>
     <div class="avatar-upload">
         <div>
-        <input type="file"  id="imageUpload" name="image"  accept=".png , .jpeg , .jpg" onchange="previewImage(this)"/>
+        <input type="file"  id="imageUpload" name="photo"  accept=".png , .jpeg , .jpg" onchange="previewImage(this)"/>
         <label for="imageUpload"></label>
 </div>
 <div class="avatar-preview">

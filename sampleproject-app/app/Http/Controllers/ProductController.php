@@ -22,59 +22,91 @@ class ProductController extends Controller
     }
 
     public function save(Request $request)
-    {
-        $validation =$request->validate([
+{
+    $validation = $request->validate([
+        'name' => 'required',
+        'price' => 'required',
+        'quantity' => 'required',
+        'description' => 'required',
+        'photo' => 'mimes:png,jpeg,jpg|max:2048',
+    ]);
 
-            'name' => 'required',
-            'price' => 'required',
-            'quantity' => 'required',
-            'description' => 'required',
-        ]);
-
-        $data = Product::create($validation);
-        if($data){
-            session()->flash('success','Product added successfully');
-            return redirect(route('admin/products'));
-        } else {
-            session()->flash('error','Error adding the product');
-            return redirect(route('admin/products/create'));
-        }
-
-      
+    if ($request->hasFile('photo')) {
+        $photo = $request->file('photo');
+        $photoName = time() . '.' . $photo->getClientOriginalExtension();
+        $photo->move(public_path('uploads'), $photoName);
+        $validation['photo'] = $photoName;
     }
+
+    $data = Product::create($validation);
+    if ($data) {
+        session()->flash('success', 'Product added successfully');
+        return redirect(route('admin/products'));
+    } else {
+        session()->flash('error', 'Error adding the product');
+        return redirect(route('admin/products/create'));
+    }
+}
 
     public function edit($id){
         $products = Product::findOrFail($id);
         return view('admin.product.update', compact('products'));
     }
 
-    public function update(Request $request ,$id){
-        $products = Product::findOrFail($id);
-        $name=$request->name;
-        $price=$request->price;
-        $quantity=$request->quantity;
-        $description=$request->description;
+    //update
+    public function update(Request $request, $id)
+{
+    $products = Product::findOrFail($id);
 
-        $products->name =$name;
-        $products->price =$price;
-        $products->quantity =$quantity;
-        $products->description =$description;
-        $data= $products->save();
+    $validation = $request->validate([
+        'name' => 'required',
+        'price' => 'required',
+        'quantity' => 'required',
+        'description' => 'required',
+        'photo' => 'mimes:png,jpeg,jpg|max:2048',
+    ]);
 
-        if($data){
-            session()->flash('success','Product updated successfully');
-            return redirect(route('admin/products'));
-        } else {
-            session()->flash('error','Error updating the product');
-            return redirect(route('admin/products/update'));
+    $products->name = $validation['name'];
+    $products->price = $validation['price'];
+    $products->quantity = $validation['quantity'];
+    $products->description = $validation['description'];
+
+    if ($request->hasFile('photo')) {
+        // Delete the old photo if it exists
+        if ($products->photo) {
+            $oldPhotoPath = public_path('uploads/' . $products->photo);
+            if (file_exists($oldPhotoPath)) {
+                unlink($oldPhotoPath);
+            }
         }
-        
+
+        $photo = $request->file('photo');
+        $photoName = time() . '.' . $photo->getClientOriginalExtension();
+        $photo->move(public_path('uploads'), $photoName);
+        $products->photo = $photoName;
     }
+
+    $data = $products->save();
+
+    if ($data) {
+        session()->flash('success', 'Product updated successfully');
+        return redirect(route('admin/products'));
+    } else {
+        session()->flash('error', 'Error updating the product');
+        return redirect(route('admin/products/update', $id));
+    }
+}
 
     //delete
     public function delete($id)
 {
     $product = Product::findOrFail($id);
+    if ($product->photo) {
+        $photoPath = public_path('uploads/' . $product->photo);
+        if (file_exists($photoPath)) {
+            unlink($photoPath);
+        }
+    }
     if ($product->delete()) {
         session()->flash('success', 'Product deleted successfully');
         return redirect()->route('admin/products');
