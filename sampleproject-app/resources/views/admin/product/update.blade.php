@@ -48,7 +48,16 @@
     <span class="text-danger">{{$message}}</span>
    @enderror
   </div>
- 
+  <div class="form-group">
+    <label for=""> UPLOAD IMAGE </label>
+    <div class="avatar-upload">
+        <div>
+        <input type="file"  id="imageUpload" name="image"  accept=".png , .jpeg , .jpg" onchange="previewImage(this)"/>
+        <label for="imageUpload"></label>
+</div>
+        
+</div>
+  </div>
   <button style="margin-top:10px"  class="btn btn-warning">Save Product</button>
 </form>
 </div>  
@@ -61,3 +70,12 @@
        
 
 </x-app-layout>
+ @push('js')
+ <script type="text/javascript">
+    function previewImage(input){
+        if(input.files && input.files[0]){
+            var reader = new FileReader();
+        }
+    }
+    </script>
+    @endpush
