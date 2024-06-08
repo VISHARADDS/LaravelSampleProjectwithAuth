@@ -6,9 +6,11 @@
 
    
       
-           
-                <div class="p-6 text-gray-900">
-                <div class="container-fluid py-4">
+    
+                <div class="p-4 text-gray-900">
+              <a href="{{ route('admin/products/create') }}" style="width: 100px; height: 40px; margin-left:20px " class="btn btn-dark d-flex justify-content-center align-items-center"> 
+                                                        <i class="material-icons opacity-10">add</i>ADD  </a>
+       <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
                 <div class="card my-4">
@@ -19,6 +21,12 @@
                     </div>
                     <div class="card-body px-0 pb-2">
                         <div class="table-responsive p-0">
+                            @if(Session::has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ Session::get('success') }}
+                            </div>
+                            @endif
+
                             <table class="table align-items-center mb-0 align-items-center table-flush" responsive="true">
                                 <thead>
                                     <tr>
@@ -28,8 +36,7 @@
                                         <th style="color:black" class="text-uppercase text-sm opacity-7 ps-2">NAME</th>
                                         <th style="color:black" class="text-uppercase text-sm opacity-7 ps-2">PRICE</th>
                                         <th style="color:black" class="text-uppercase text-sm opacity-7 ps-2">QUANTITY</th>
-                                        <th style="color:black" class="text-uppercase text-sm opacity-7 ps-2">SIZE</th>
-                                        <th style="color:black" class="text-uppercase text-sm opacity-7 ps-2">MATERIAL</th>
+                                        <th style="color:black" class="text-uppercase text-sm opacity-7 ps-2">CATEGORY</th>
                                         <th style="color:black" class="text-uppercase text-sm opacity-7 ps-2">Last updated</th>
                                         <th class="text-secondary opacity-7"></th>
                                     </tr>
@@ -47,9 +54,6 @@
                                         </td>
                                         <td>
                                             <h6 style="color:black" class="mb-0 text-sm"></h6>
-                                        </td>
-                                        <td class="align-justify text-justify text-sm">
-                                            <p style="font-size:14px" class="font-weight-bold mb-0"></p>
                                         </td>
                                         <td class="align-justify text-justify text-sm">
                                             <p style="font-size:14px" class="font-weight-bold mb-0"></p>
