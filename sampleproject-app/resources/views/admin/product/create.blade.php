@@ -47,6 +47,16 @@
     <span class="text-danger">{{$message}}</span>
    @enderror
   </div>
+  <div class="form-group">
+    <label for=""> UPLOAD IMAGE </label>
+    <div class="avatar-upload">
+        <div>
+        <input type="file"  id="imageUpload" name="image"  accept=".png , .jpeg , .jpg"/>
+        <label for="imageUpload"></label>
+</div>
+        
+</div>
+  </div>
  
   <button style="margin-top:10px"  class="btn btn-primary">Save Product</button>
 </form>
