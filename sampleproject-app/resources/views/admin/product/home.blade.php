@@ -31,7 +31,7 @@
                                 <thead>
                                     <tr>
                                        
-                                        <th style="color:black" class="text-uppercase text-sm opacity-7 ps-3">PRODUCT ID</th>
+                                        <th style="color:black" class="text-uppercase text-sm opacity-7 ps-3"></th>
                                         <th style="color:black" class="text-uppercase text-sm opacity-7 ps-2">IMAGE</th>
                                         <th style="color:black" class="text-uppercase text-sm opacity-7 ps-2">NAME</th>
                                         <th style="color:black" class="text-uppercase text-sm opacity-7 ps-2">PRICE</th>
@@ -42,13 +42,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                 
+                                 @forelse ($products as $product)
                                    <tr >
                                   
                                         <td>
                                             <div class="px-2 py-1">
                                                 <div>
-                                                    <p style="font-size:14px" class="font-weight-bold mb-0"></p>
+                                                    <p style="font-size:14px" class="font-weight-bold mb-0">{{ $loop->iteration}}</p>
                                                 </div>
                                             </div>
                                         </td>
@@ -56,25 +56,25 @@
                                             <h6 style="color:black" class="mb-0 text-sm"></h6>
                                         </td>
                                         <td class="align-justify text-justify text-sm">
-                                            <p style="font-size:14px" class="font-weight-bold mb-0"></p>
+                                            <p style="font-size:14px" class="font-weight-bold mb-0">{{ $product->name}}</p>
                                         </td>
                                         <td class="align-justify text-justify text-sm">
-                                            <p style="font-size:14px" class="font-weight-bold mb-0"></p>
+                                            <p style="font-size:14px" class="font-weight-bold mb-0">{{ $product->price}}</p>
                                         </td>
                                         <td class="align-justify text-justify text-sm">
-                                            <p style="font-size:14px" class="font-weight-bold mb-0"></p>
+                                            <p style="font-size:14px" class="font-weight-bold mb-0">{{ $product->quantity}}</p>
                                         </td>
                                         <td class="align-justify text-justify text-sm">
-                                            <p style="font-size:14px" class="font-weight-bold mb-0"></p>
+                                            <p style="font-size:14px" class="font-weight-bold mb-0">{{ $product->description}}</p>
                                         </td>
                                         <td class="align-justify text-justify text-sm">
-                                            <p style="font-size:14px" class="font-weight-bold mb-0"></p>
+                                            <p style="font-size:14px" class="font-weight-bold mb-0">{{ $product->updated_at}}</p>
                                         </td>
                                         <td>
                                             <div style="display: flex">
                                                 <div style="padding: 0; display: flex; align-items: center">
                                                     <button style="width: 40px; height: 40px" type="button" class="btn btn-success d-flex justify-content-center align-items-center">
-                                                        <i class="material-icons opacity-10">book</i>
+                                                        <i class="material-icons opacity-10">edit</i>
                                                     </button>
                                                 </div>
                                                 <div style="margin-left: 10px; display: flex; align-items: center">
@@ -83,15 +83,15 @@
                                                     </button>
                                                 </div>
                                             
-                                                 <div style="margin-left: 10px; display: flex; align-items: center">
-                                                    <button style="width: 40px; height: 40px" type="button" class="btn btn-info d-flex justify-content-center align-items-center">
-                                                        <i class="material-icons opacity-10">download</i>
-                                                    </button>
-                                                </div>
                                             </div>
                                         </td>
                                     </tr>
+                                    @empty
+                                    <tr>
+                                        <td class="text-center" colspan="5">Product not found </td>
                                 
+                                     </tr>
+                                     @endforelse
                                     
                                 </tbody>
                             </table>

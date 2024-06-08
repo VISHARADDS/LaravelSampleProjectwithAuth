@@ -48,7 +48,7 @@
    @enderror
   </div>
  
-  <button style="margin-top:10px" type="submit" class="btn btn-primary">Save Product</button>
+  <button style="margin-top:10px"  class="btn btn-primary">Save Product</button>
 </form>
 </div>  
 

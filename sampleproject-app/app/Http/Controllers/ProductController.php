@@ -7,9 +7,13 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+
+    
     public function index()
     {
-        return view('admin.product.home');
+        $products =Product::orderBy('id','desc')->get();
+        $total=Product::count();
+        return view('admin.product.home', compact(['products','total']));
     }
 
     public function create()
