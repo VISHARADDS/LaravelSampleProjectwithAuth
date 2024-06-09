@@ -1,3 +1,76 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 6rem; /* Ensure padding-top is enough to push content down */
+}
+
+.container {
+    padding-top: 20px;
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.footer-container img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+    margin-left: 50px;
+}
+
+.footer-container h4 {
+    color: white;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.footer-container a {
+    color: white;
+    margin-right: 20px;
+}
+
+.footer-container p {
+    margin: 0;
+}
+
+.footer-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-container ul li {
+    display: inline;
+    margin-right: 20px;
+}
