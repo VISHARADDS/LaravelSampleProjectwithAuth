@@ -53,7 +53,12 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <h6 style="color:black" class="mb-0 text-sm"></h6>
+                                            <h6 style="color:black" class="mb-0 text-sm">
+                                                <div class="showPhoto">
+                                                    <div id="imagePreview" if >
+                                                </div>
+                                              </div>    
+                                            </h6>
                                         </td>
                                         <td class="align-justify text-justify text-sm">
                                             <p style="font-size:14px" class="font-weight-bold mb-0">{{ $product->name}}</p>
