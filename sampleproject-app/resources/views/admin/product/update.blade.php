@@ -79,7 +79,7 @@
         <label for="imageUpload"></label>
 </div>
 <div class="avatar-preview">
-<div style="background-image: url('{{ $products->image ? asset('uploads/' . $products->image) : asset('/image/avatar.png') }}')" id="imagePreview"></div>
+<div style="@if (isset($products->id) && $products->photo !='') background-image: url('{{ url('/')}}/uploads/{{ $products->photo}}')@else background-image:url('{{url('/image/avatar.png' )}}')@endif" id="imagePreview"></div>
         
 </div>
         
